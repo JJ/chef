@@ -8,7 +8,7 @@
     
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/extra.css">
-    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/theme/sky.css">
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -33,11 +33,63 @@ src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"
 /></a><br />This work is under a <a rel="license"
 				    href="http://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 license</a>.</div>
 
-	<section><h1>Provisionamiento con Ansible</h1>
+	<section><h1>Provisionando con Chef</h1>
 	  <h2><code>@jjmerelo</code> para <a href='https://www.meetup.com/es-ES/Granada-Geek/'>Granada Geek</a> + @iv_gii</h2>
 	</section>
 	
-	<section>Slide 2</section>
+	<section
+          data-background='https://farm2.staticflickr.com/1958/44950672935_cf0236ff00_k_d.jpg'><h1>Provisionar
+          == amueblar</h1>
+
+        </section>
+
+        <section><h1>1. Provisionar</h1>
+          <h1 class='fragment'>2. Comprobar</h1>
+        </section>
+
+        <section><h1>Usando <code>chef-run</code></h1>
+          <pre><code>chef-run
+    -i .vagrant/machines/default/virtualbox/private_key
+      vagrant@127.0.0.1:2222 package ruby action=install</code></pre>
+          <img src='img/chef-run.png' alt='ejecutando'>
+        </section>
+
+        <section><h1><code>chef-run</code> es</h1>
+          <pre><code>chef-run objetivo recurso nombre [otras cosas]</code></pre>
+          <pre class='fragment'><code>chef-run localhost package ruby [..]</code></pre>
+
+          <aside class='notes'>Se puede empezar fácilmente a usar chef
+          por aquí. Las instrucciones, en <a
+            href='https://www.chef.sh/docs/reference/chef-run/'>esta
+          página</a>. Lo que va a hacer chef-run es instalar un
+          cliente de chef en la máquina objetivo (en este caso,
+          definida con Vagrant) y a continuación instalar el paquete
+          correspondiente. Pero lo importante es entender el concepto
+            de recurso.</aside>
+        </section>
+        
+          <section data-background='https://farm2.staticflickr.com/1906/45698887222_b2d2b11dfe_k_d.jpg'>
+          <h1><strong>Recursos</strong> → <em>tareas</em></h1>
+          <h2 class='fragment'> Recurso + recurso +... → Receta</h2>
+
+          <aside class='notes'>Los recursos vienen descritos aquí: <a
+            href='https://docs.chef.io/resource.html'>Abour
+            resources</a>. Hay como tres o cuatro webs de Chef. Es un lío.</aside>
+          </section>
+
+          <section><h2>Recursos →</h2>
+            <h3 class='fragment'>Describen el estado deseado</h3>
+            <h3 class='fragment'>Y los <strong>pasos</strong> para alcanzarlo</h3>
+            <h3 class='fragment'>Y el <strong>tipo</strong></h3>
+            <h3 class='fragment'>Y propiedades adicionales</h3>
+          </section>
+
+          <section><h1><code>chef-run</code> es</h1>
+            <pre><code>chef-run localhost package ruby action=install</code></pre>
+            <pre class='fragment'><code>chef-run localhost tipo-recurso recurso pasos</code></pre>
+            <aside class='notes'>Así se usan los recursos directamente
+              desde la línea de órdenes, y se ilustra como funciona.</aside>
+          </section>
       </div>
     </div>
 
