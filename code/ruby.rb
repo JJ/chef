@@ -1,4 +1,3 @@
-package 'ruby' do
-  version '2.5.3'
-  action :install
+apt_package 'ruby' do
+  default_release '2.3'
 end

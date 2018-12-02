@@ -129,7 +129,42 @@ end
               genéricas como <code>user</code>
             </aside>
           </section>
-          
+
+          <section><h1>Sh*t happens</h1>
+            <pre><code>apt_package 'ruby' do
+  default_release '2.3'
+end
+            </code></pre>
+
+            <pre class='fragment'><code>The converge of the remote host failed for the
+following reason:
+
+  Expected process to exit with [0], but received '100'
+            </code></pre>
+            <aside class='notes'>Podemos querer instalar alguna
+            versión de Ruby que no sea la estándar. Sin embargo, esto
+              se obtiene de los repositorios y puede que no lo
+              encuentren. El error obtenido no es óptimo</aside>
+          </section>
+
+          <section><h1>Usa los logs, Luke</h1>
+            <pre><code> tail   ~/.chef-workstation/logs/default.log</code></pre>
+            <pre class='fragment'><code>STDOUT: ruby:
+  Installed: 1:2.1.5+deb8u2
+  Candidate: 1:2.1.5+deb8u2
+  Version table:
+ *** 1:2.1.5+deb8u2 0
+        500 http://httpredir.debian.org/debian/ jessie/main amd64 Packages
+        100 /var/lib/dpkg/status
+STDERR: E: The value '2.3' is invalid for APT::Default-Release as such a release is not available in the sources
+---- End output of ["apt-cache", "-o", "APT::Default-Release=2.3", "policy", "ruby"] ----
+Ran ["apt-cache", "-o", "APT::Default-Release=2.3", "policy", "ruby"] returned 100
+            </code></pre>
+
+            <aside class='notes'>La verdad es que podía dar ese error
+      desde el principio, pero menos da una piedra. Por lo menos
+              averiguamos de dónde se baja las cosas</aside>
+          </section>
       </div>
     </div>
 
