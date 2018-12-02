@@ -90,11 +90,51 @@ src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"
             <aside class='notes'>Así se usan los recursos directamente
               desde la línea de órdenes, y se ilustra como funciona.</aside>
           </section>
+
+          <section
+          data-background='https://farm5.staticflickr.com/4855/46148347441_fd7763c791_k_d.jpg'><h1><code>chef-run</code>
+            se auto-instala</h1>
+            <h2 class='fragment'>Necesita acceso
+              <code>sudo</code></h2>
+          </section>
+
+          <section><h1>Usando recetas</h1>
+            <pre><code>package 'git' do
+  action :install
+end
+            </code></pre>
+
+            <pre class='fragment'><code>chef-run -i path-to/private_key user@host git.rb</code></pre>
+            <aside class='notes'>Guardada en
+            <code>git.rb</code>. Usando, como anteriormente, un
+            recurso y una acción a hacer con el mismo.</aside>
+          </section>
+
+          <section><h1>Una receta</h1>
+
+            <pre><code>git 'microservice' do
+  repository 'https://github.com/JJ/microservices-broker'
+  user 'vagrant'
+  destination '/home/vagrant/microservice'
+  action :checkout
+end
+            </code></pre>
+            <aside class='notes'>En este caso se trata de usar un
+              recurso llamado <code>git</code>. Hay <a
+  href='https://docs.chef.io/resource_reference.html'>una buena
+              cantidad de recursos que se pueden usar</a>, así como
+              una serie de propiedades comunes y específicas para
+              recursos determinados. En este caso, <code>action</code>
+  es específica de este recurso en particular; en el resto algunas son
+              genéricas como <code>user</code>
+            </aside>
+          </section>
+          
       </div>
     </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
 		<script>
 			// More info about config & dependencies:
