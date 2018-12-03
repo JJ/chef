@@ -2,7 +2,7 @@ user 'app' do
   comment 'User for app'
   home '/app'
   shell '/bin/bash'
-  password '$1$JJsvHslasdfjVEroftprNn4JHtDi'
+  password ENV['MSPASSWORD']
 end
 
 directory '/app' do

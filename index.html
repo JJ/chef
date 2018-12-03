@@ -167,6 +167,34 @@ Ran ["apt-cache", "-o", "APT::Default-Release=2.3", "policy", "ruby"] returned 1
       desde el principio, pero menos da una piedra. Por lo menos
               averiguamos de dónde se baja las cosas</aside>
           </section>
+
+	  <section><h1>Usuario y directorio</h1>
+	    <pre><code>user 'app' do
+  comment 'User for app'
+  home '/app'
+  shell '/bin/bash'
+  password '$1$JJsvHslasdfjVEroftprNn4JHtDi'
+end
+
+directory '/app' do
+  owner 'app'
+  group 'app'
+  mode '0755'
+end
+	    </code></pre>
+
+	    <aside class='notes'>Tanto <code>user</code>
+	      como <code>directory</code> son dos recursos de Chef. El primero
+	    sólo configura el usuario, hace falta el segundo para
+	      crear el directorio realmente. La clave está encriptada
+	      y se escribe directamente en el fichero /etc/shadow.</aside>
+	  </section>
+
+	  <section data-background='https://farm5.staticflickr.com/4906/45245369345_7ca334779c_o_d.jpg'>
+	    <h1><strong>Nunca</strong> claves en ficheros.</h1>
+	    <aside class='notes'>Aunque sea encriptada</aside>
+	  </section>
+	  
       </div>
     </div>
 
