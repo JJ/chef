@@ -192,9 +192,16 @@ end
 
 	  <section data-background='https://farm5.staticflickr.com/4906/45245369345_7ca334779c_o_d.jpg'>
 	    <h1><strong>Nunca</strong> claves en ficheros.</h1>
-	    <aside class='notes'>Aunque sea encriptada</aside>
+	    <aside class='notes'>Pero si es encriptada no pasa
+	    nada. Lo mejor es usar <em>data bags</em> para que no haya
+	    problemas. </aside>
 	  </section>
-	  
+
+	  <section><h1>Creando una clave secreta</h1>
+	    <pre><code>openssl passwd -1 $MS_PASSWORD</code></pre>
+	    <aside class='notes'>Sacado
+	      de <a href='https://docs.chef.io/resource_user.html#password-shadow-hash'>aquí</a></aside>
+	  </section>
       </div>
     </div>
 

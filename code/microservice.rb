@@ -2,7 +2,7 @@ user 'app' do
   comment 'User for app'
   home '/app'
   shell '/bin/bash'
-  password ENV['MSPASSWORD']
+  password $1$nDj1YEqy$vxf1HTVTE/Q/4.zBB1iH20
 end
 
 directory '/app' do
@@ -18,3 +18,4 @@ git 'microservice' do
   destination '/app'
   action :checkout
 end
+
