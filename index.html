@@ -202,6 +202,40 @@ end
 	    <aside class='notes'>Sacado
 	      de <a href='https://docs.chef.io/resource_user.html#password-shadow-hash'>aquí</a></aside>
 	  </section>
+
+	  <section><h1>Instalando de verdad</h1>
+	    <pre><code>package 'git' 
+package 'gcc'
+package 'make'
+package 'sqlite3' do 
+  case node[:platform]
+  when 'redhat', 'centos', 'fedora'
+    package_name 'sqlite-devel'
+  when 'ubuntu', 'debian'
+    package_name 'libsqlite3-dev'
+  end
+end
+	    </code></pre>
+	    <aside class='notes'>Aquí es donde se puede notar que se
+	    está usando Ruby como lenguaje base. En este caso lo
+	      hacemos para una sentencia <code>case</code>, pero
+	      además usamos la variable <code>node</code> que contiene
+	      información sobre el host sobre el que se está instalando.</aside>
+	  </section>
+
+	  <section><h1>Finalmente, las gemas</h1>
+	    <pre><code>chef_gem 'bunny'
+chef_gem 'sinatra'
+chef_gem 'json'
+chef_gem 'httparty'
+chef_gem 'sqlite3'
+chef_gem 'etcdv3'	    </code></pre>
+	    <aside class='notes'><code>chef_gem</code> es la forma que
+	    tiene Chef para instalar gemas, y es una alternativa al
+	    Gemfile, que en realidad no es fácil de usar desde
+	    aquí. Es mejor instalar todo, porque además chef va a
+	      comprobar que efectivamente se hayan instalado</aside>
+	  </section>
       </div>
     </div>
 
