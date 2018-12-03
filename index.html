@@ -52,7 +52,14 @@ src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"
     -i .vagrant/machines/default/virtualbox/private_key
       vagrant@127.0.0.1:2222 package ruby action=install</code></pre>
           <img src='img/chef-run.png' alt='ejecutando'>
-        </section>
+
+	  <aside class='notes'>chef-run se ha introducido este año, y
+	  simplifica el uso de chef porque se puede usar con un solo
+	  fichero, y además se pueden ejecutar órdenes directamente
+	  desde ahí. Incluye una serie de utilidades, que quedan
+	  ocultas al usuario pero que se pueden usar si es necesario
+	    desde el <em>nodo</em> o host.</aside>
+	</section>
 
         <section><h1><code>chef-run</code> es</h1>
           <pre><code>chef-run objetivo recurso nombre [otras cosas]</code></pre>
@@ -236,6 +243,27 @@ chef_gem 'etcdv3'	    </code></pre>
 	    aquí. Es mejor instalar todo, porque además chef va a
 	      comprobar que efectivamente se hayan instalado</aside>
 	  </section>
+
+	  <section><h1>Y más cosas</h1>
+	    <h1 class='fragment'>Servicios</h1>
+	    <h1 class='fragment'>Plantillas</h1>
+	    <aside class='notes'>Pero haría este seminario demasiado
+	    extenso y/o no he tenido tiempo de preparármelo (pick
+	      one).
+	    </aside>
+	  </section>
+	  
+	  <section><h1>Usa siempre sistemas de aprovisionamiento.</h1>
+	  </section>
+
+	  <section><h1>Infraestructura como código es
+	      reproducible</h1>
+	    <h2 class='fragment'>Y testeable</h2>
+	  </section>
+
+	  <section><h1>Vagrant + Chef == combinación
+	      ganadora</h1></section>
+	  
       </div>
     </div>
 
